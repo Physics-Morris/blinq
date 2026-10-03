@@ -3,10 +3,12 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif}
 main{max-width:640px;margin:0 auto;padding:72px 16px 96px}
-.mark{display:flex;gap:10px;justify-content:center;margin-bottom:28px}
-.mark i{width:12px;height:12px;border-radius:50%;background:var(--fg);opacity:.85;animation:b 3.4s ease-in-out infinite}
-.mark i:nth-child(2){animation-delay:.15s}.mark i:nth-child(3){animation-delay:.3s}
-@keyframes b{0%,86%,100%{transform:scaleY(1)}92%{transform:scaleY(.15)}}
+.eye{position:relative;width:120px;height:80px;margin:0 auto 32px}
+.eye i{position:absolute;left:50%;top:50%;border-radius:50%;background:var(--fg);transform:translate(var(--x),var(--y));animation:blink 4.2s cubic-bezier(.3,.7,.4,1.4) infinite}
+.eye i.pupil{animation:blink 4.2s cubic-bezier(.3,.7,.4,1.4) infinite,glance 7s ease-in-out infinite}
+@keyframes blink{0%,84%,100%{transform:translate(var(--x),var(--y))}90%{transform:translate(calc(var(--x)*.92),0) scale(.75)}}
+@keyframes glance{0%,100%{translate:-9px 0}50%{translate:9px 0}}
+@media (prefers-reduced-motion:reduce){.eye i{animation:none!important}}
 h1{text-align:center;font-weight:400;letter-spacing:.5em;font-size:15px;text-transform:uppercase;margin:0 0 8px}
 .tag{text-align:center;color:var(--muted);margin:0 0 56px}
 h2{font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:48px 0 8px}
